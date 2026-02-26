@@ -1,13 +1,19 @@
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from send_llm import call_gpt52_smart, call_4o_mini_stupid
+from cognitive_inertia.llm import call_4o_mini_stupid, call_gpt52_smart
+from cognitive_inertia.paths import BASELINE_RESPONSES_PATH, MATH_DATASET_PATH
 import pandas as pd
 import tqdm
 
 max_workers = 8
 checkpoint_interval = 2
-checkpoint_path = "results_single_response.csv"
+checkpoint_path = BASELINE_RESPONSES_PATH
 
-dataset = pd.read_csv("MATH-500_test.csv")
+dataset = pd.read_csv(MATH_DATASET_PATH)
 
 
 def process_row(row):

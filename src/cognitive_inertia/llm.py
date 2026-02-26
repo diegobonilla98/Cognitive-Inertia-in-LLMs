@@ -1,32 +1,37 @@
 import os
-from openai import OpenAI
+from pathlib import Path
+
 from dotenv import load_dotenv
+from openai import OpenAI
+
+from cognitive_inertia.paths import SYSTEM_PROMPT_PATH
 
 load_dotenv()
-
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 SMART_MODEL = "gpt-5.2-2025-12-11"
 STUPID_MODEL = "gpt-4o-mini-2024-07-18"
 
-with open("system_prompt.txt", "r") as file:
-    DEVELOPER_INSTRUCTIONS = file.read()
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+
+def _read_system_prompt(path: Path = SYSTEM_PROMPT_PATH) -> str:
+    return path.read_text(encoding="utf-8").strip()
+
+
+DEVELOPER_INSTRUCTIONS = _read_system_prompt()
 
 
 def call_gpt52_smart_messages(
     messages: list[dict[str, str]], developer_instructions: str = DEVELOPER_INSTRUCTIONS
 ) -> str:
-    resp = client.responses.create(
+    response = client.responses.create(
         model=SMART_MODEL,
         instructions=developer_instructions,
         input=messages,
         reasoning={"effort": "medium"},
-        text={
-            "format": {"type": "text"},
-            "verbosity": "medium",
-        },
+        text={"format": {"type": "text"}, "verbosity": "medium"},
     )
-    return resp.output_text
+    return response.output_text
 
 
 def call_gpt52_smart(user_text: str, developer_instructions: str = DEVELOPER_INSTRUCTIONS) -> str:
@@ -39,7 +44,7 @@ def call_gpt52_smart(user_text: str, developer_instructions: str = DEVELOPER_INS
 def call_4o_mini_stupid_messages(
     messages: list[dict[str, str]], developer_instructions: str = DEVELOPER_INSTRUCTIONS
 ) -> str:
-    resp = client.responses.create(
+    response = client.responses.create(
         model=STUPID_MODEL,
         instructions=developer_instructions,
         input=messages,
@@ -48,7 +53,7 @@ def call_4o_mini_stupid_messages(
         max_output_tokens=2048,
         text={"format": {"type": "text"}},
     )
-    return resp.output_text
+    return response.output_text
 
 
 def call_4o_mini_stupid(user_text: str, developer_instructions: str = DEVELOPER_INSTRUCTIONS) -> str:
@@ -56,13 +61,3 @@ def call_4o_mini_stupid(user_text: str, developer_instructions: str = DEVELOPER_
         [{"role": "user", "content": user_text}],
         developer_instructions=developer_instructions,
     )
-
-
-if __name__ == "__main__":
-    prompt = "Solve: If x^2 = 9, what are the possible values of x?"
-
-    print("=== GPT-5.2 (smart) ===")
-    print(call_gpt52_smart(prompt))
-
-    print("\n=== GPT-4o-mini (stupid) ===")
-    print(call_4o_mini_stupid(prompt))

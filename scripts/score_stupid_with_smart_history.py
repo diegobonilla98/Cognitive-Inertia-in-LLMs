@@ -1,15 +1,21 @@
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import pandas as pd
 import tqdm
 
-from send_llm import call_gpt52_smart
+from cognitive_inertia.llm import call_gpt52_smart
+from cognitive_inertia.paths import MATH_DATASET_PATH, STUPID_TO_SMART_RESPONSES_PATH, STUPID_TO_SMART_SCORES_PATH
 
 max_workers = 8
 checkpoint_interval = 10
-input_path = "responses_from_smart_to_stupid.csv"
-output_path = "responses_from_smart_to_stupid_scores.csv"
-math_dataset_path = "MATH-500_test.csv"
+input_path = STUPID_TO_SMART_RESPONSES_PATH
+output_path = STUPID_TO_SMART_SCORES_PATH
+math_dataset_path = MATH_DATASET_PATH
 
 SCORER_INSTRUCTIONS = "You are a math teacher. You are given a problem and a solution. You need to evaluate the solution and give a score between 0 and 100. Only answer with the score. Nothing more. It will be automatically parsed as int(your_response) so don't include any other text."
 
@@ -23,7 +29,7 @@ if not all(col in dataset.columns for col in required_columns):
 def process_row(row: pd.Series):
     unique_id = row["unique_id"]
     problem = row["problem"]
-    hacked_response = row["hacked_smart_response"]
+    hacked_response = row["hacked_stupid_response"]
     subject = row["subject"]
     level = row["level"]
     answer = row["answer"]
@@ -50,11 +56,11 @@ Student Response: {hacked_response}
     return {
         "unique_id": unique_id,
         "problem": problem,
-        "hacked_smart_response": hacked_response,
-        "hacked_smart_score": score,
-        "original_smart_response": row.get("original_smart_response"),
-        "original_smart_score": row.get("original_smart_score"),
+        "hacked_stupid_response": hacked_response,
+        "hacked_stupid_score": score,
+        "original_stupid_response": row.get("original_stupid_response"),
         "original_stupid_score": row.get("original_stupid_score"),
+        "original_smart_score": row.get("original_smart_score"),
         "subject": subject,
         "level": level,
         "answer": answer,
