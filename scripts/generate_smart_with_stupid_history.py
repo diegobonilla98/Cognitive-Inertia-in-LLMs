@@ -1,14 +1,20 @@
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import pandas as pd
 import tqdm
 
-from send_llm import call_gpt52_smart_messages
+from cognitive_inertia.llm import call_gpt52_smart_messages
+from cognitive_inertia.paths import BASELINE_SCORES_PATH, SMART_TO_STUPID_RESPONSES_PATH
 
 max_workers = 8
 checkpoint_interval = 2
-scores_path = "results_scores.csv"
-output_path = "responses_from_smart_to_stupid.csv"
+scores_path = BASELINE_SCORES_PATH
+output_path = SMART_TO_STUPID_RESPONSES_PATH
 
 history_examples = 10
 smart_target_score = 100

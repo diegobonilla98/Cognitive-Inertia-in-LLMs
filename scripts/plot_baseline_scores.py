@@ -1,9 +1,16 @@
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-results_path = "results_scores.csv"
-output_path = "eval_plot.png"
+from cognitive_inertia.paths import BASELINE_PLOT_PATH, BASELINE_SCORES_PATH
+
+results_path = BASELINE_SCORES_PATH
+output_path = BASELINE_PLOT_PATH
 
 df = pd.read_csv(results_path)
 df_long = df.melt(

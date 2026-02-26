@@ -1,3 +1,8 @@
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+
 import argparse
 import json
 import math
@@ -5,6 +10,12 @@ from datetime import datetime, timezone
 
 import numpy as np
 import pandas as pd
+
+from cognitive_inertia.paths import (
+    BASELINE_SCORES_PATH,
+    SMART_TO_STUPID_SCORES_PATH,
+    STUPID_TO_SMART_SCORES_PATH,
+)
 
 
 def _require_columns(df: pd.DataFrame, required: list[str], name: str) -> None:
@@ -721,11 +732,11 @@ Generated at: {metrics["generated_at_utc"]}
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Measure and report context-hacking study results.")
-    parser.add_argument("--baseline-path", default="results_scores.csv")
-    parser.add_argument("--stupid-to-smart-path", default="responses_from_stupid_to_smart_scores.csv")
-    parser.add_argument("--smart-to-stupid-path", default="responses_from_smart_to_stupid_scores.csv")
-    parser.add_argument("--json-output", default="study_metrics.json")
-    parser.add_argument("--report-output", default="MEGA_STUDY_RESULTS.md")
+    parser.add_argument("--baseline-path", default=str(BASELINE_SCORES_PATH))
+    parser.add_argument("--stupid-to-smart-path", default=str(STUPID_TO_SMART_SCORES_PATH))
+    parser.add_argument("--smart-to-stupid-path", default=str(SMART_TO_STUPID_SCORES_PATH))
+    parser.add_argument("--json-output", default="data/results/study_metrics.json")
+    parser.add_argument("--report-output", default="docs/MEGA_STUDY_RESULTS.md")
     args = parser.parse_args()
 
     metrics = compute_metrics(

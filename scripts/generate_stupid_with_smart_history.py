@@ -1,15 +1,21 @@
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import random
 
 import pandas as pd
 import tqdm
 
-from send_llm import call_4o_mini_stupid_messages
+from cognitive_inertia.llm import call_4o_mini_stupid_messages
+from cognitive_inertia.paths import BASELINE_SCORES_PATH, STUPID_TO_SMART_RESPONSES_PATH
 
 max_workers = 8
 checkpoint_interval = 2
-scores_path = "results_scores.csv"
-output_path = "responses_from_stupid_to_smart.csv"
+scores_path = BASELINE_SCORES_PATH
+output_path = STUPID_TO_SMART_RESPONSES_PATH
 
 history_examples = 10
 failure_threshold = 100

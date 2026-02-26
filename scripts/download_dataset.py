@@ -1,7 +1,14 @@
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+
 from datasets import load_dataset
 
 dataset_name = "HuggingFaceH4/MATH-500"
-output_path = "MATH-500_test.csv"
+from cognitive_inertia.paths import MATH_DATASET_PATH
+
+output_path = MATH_DATASET_PATH
 
 dataset = load_dataset(dataset_name, split="test")
 width = max(3, len(str(len(dataset))))

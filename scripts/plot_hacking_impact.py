@@ -1,9 +1,21 @@
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+
 import argparse
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+
+from cognitive_inertia.paths import (
+    ALL_IN_ONE_PLOT_PATH,
+    BASELINE_SCORES_PATH,
+    SMART_TO_STUPID_SCORES_PATH,
+    STUPID_TO_SMART_SCORES_PATH,
+)
 
 
 def load_data(
@@ -230,10 +242,10 @@ def main():
     parser = argparse.ArgumentParser(
         description="Unified evaluation plot for baseline and history-hacking experiments."
     )
-    parser.add_argument("--baseline-path", default="results_scores.csv")
-    parser.add_argument("--stupid-hacked-path", default="responses_from_stupid_to_smart_scores.csv")
-    parser.add_argument("--smart-hacked-path", default="responses_from_smart_to_stupid_scores.csv")
-    parser.add_argument("--output-path", default="eval_all_in_one_plot.png")
+    parser.add_argument("--baseline-path", default=str(BASELINE_SCORES_PATH))
+    parser.add_argument("--stupid-hacked-path", default=str(STUPID_TO_SMART_SCORES_PATH))
+    parser.add_argument("--smart-hacked-path", default=str(SMART_TO_STUPID_SCORES_PATH))
+    parser.add_argument("--output-path", default=str(ALL_IN_ONE_PLOT_PATH))
     parser.add_argument("--show", action="store_true", help="Display the figure window after saving.")
     args = parser.parse_args()
 
