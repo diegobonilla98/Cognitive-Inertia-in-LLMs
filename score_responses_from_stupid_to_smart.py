@@ -1,0 +1,82 @@
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+import pandas as pd
+import tqdm
+
+from send_llm import call_gpt52_smart
+
+max_workers = 8
+checkpoint_interval = 10
+input_path = "responses_from_stupid_to_smart.csv"
+output_path = "responses_from_stupid_to_smart_scores.csv"
+math_dataset_path = "MATH-500_test.csv"
+
+SCORER_INSTRUCTIONS = "You are a math teacher. You are given a problem and a solution. You need to evaluate the solution and give a score between 0 and 100. Only answer with the score. Nothing more. It will be automatically parsed as int(your_response) so don't include any other text."
+
+dataset = pd.read_csv(input_path)
+required_columns = ["problem", "solution", "answer", "subject", "level"]
+if not all(col in dataset.columns for col in required_columns):
+    math_df = pd.read_csv(math_dataset_path)[["unique_id", "problem", "solution", "answer", "subject", "level"]]
+    dataset = dataset.merge(math_df, on="unique_id", how="left")
+
+
+def process_row(row: pd.Series):
+    unique_id = row["unique_id"]
+    problem = row["problem"]
+    hacked_response = row["hacked_stupid_response"]
+    subject = row["subject"]
+    level = row["level"]
+    answer = row["answer"]
+    solution = row["solution"]
+
+    prompt = f"""
+Problem: {problem}
+Ground Truth Solution: {solution}
+Ground Truth Answer: {answer}
+Ground Truth Subject: {subject}
+Ground Truth Level: {level}/5
+
+-------------------------------
+
+Student Response: {hacked_response}
+"""
+    try:
+        score = call_gpt52_smart(prompt, SCORER_INSTRUCTIONS)
+        score = int(score.strip())
+    except Exception as e:
+        print(f"Error on unique_id={unique_id}: {e}")
+        return None
+
+    return {
+        "unique_id": unique_id,
+        "problem": problem,
+        "hacked_stupid_response": hacked_response,
+        "hacked_stupid_score": score,
+        "original_stupid_response": row.get("original_stupid_response"),
+        "original_stupid_score": row.get("original_stupid_score"),
+        "original_smart_score": row.get("original_smart_score"),
+        "subject": subject,
+        "level": level,
+        "answer": answer,
+        "solution": solution,
+        "history_source": row.get("history_source"),
+        "history_size": row.get("history_size"),
+        "history_unique_ids": row.get("history_unique_ids"),
+    }
+
+
+results = []
+with ThreadPoolExecutor(max_workers=max_workers) as executor:
+    futures = {executor.submit(process_row, row): row for _, row in dataset.iterrows()}
+    for future in tqdm.tqdm(as_completed(futures), total=len(futures)):
+        out = future.result()
+        if out is not None:
+            results.append(out)
+            if len(results) % checkpoint_interval == 0:
+                df = pd.DataFrame(results)
+                df = df.sort_values("unique_id").reset_index(drop=True)
+                df.to_csv(output_path, index=False)
+
+df = pd.DataFrame(results)
+df = df.sort_values("unique_id").reset_index(drop=True)
+df.to_csv(output_path, index=False)

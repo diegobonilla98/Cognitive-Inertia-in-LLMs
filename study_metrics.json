@@ -1,0 +1,908 @@
+{
+  "generated_at_utc": "2026-02-25 22:58:32 UTC",
+  "source_files": {
+    "baseline": "results_scores.csv",
+    "stupid_to_smart_scores": "responses_from_stupid_to_smart_scores.csv",
+    "smart_to_stupid_scores": "responses_from_smart_to_stupid_scores.csv"
+  },
+  "baseline": {
+    "n": 500,
+    "smart": {
+      "n": 500,
+      "mean": 99.172,
+      "std": 7.471147977667717,
+      "median": 100.0,
+      "min": 0.0,
+      "p25": 100.0,
+      "p75": 100.0,
+      "max": 100.0
+    },
+    "stupid": {
+      "n": 500,
+      "mean": 82.172,
+      "std": 32.76855156920867,
+      "median": 100.0,
+      "min": 0.0,
+      "p25": 90.0,
+      "p75": 100.0,
+      "max": 100.0
+    },
+    "gap_smart_minus_stupid": {
+      "n": 500,
+      "mean": 17.0,
+      "std": 32.52161297693032,
+      "median": 0.0,
+      "min": -80.0,
+      "p25": 0.0,
+      "p75": 8.5,
+      "max": 100.0
+    },
+    "smart_perfect_count": 487,
+    "stupid_perfect_count": 346
+  },
+  "stupid_to_smart": {
+    "n": 154,
+    "before": {
+      "n": 154,
+      "mean": 42.116883116883116,
+      "std": 34.181741877839436,
+      "median": 25.0,
+      "min": 0.0,
+      "p25": 10.0,
+      "p75": 78.0,
+      "max": 98.0
+    },
+    "after": {
+      "n": 154,
+      "mean": 46.12987012987013,
+      "std": 37.836542370374104,
+      "median": 25.0,
+      "min": 0.0,
+      "p25": 15.0,
+      "p75": 95.0,
+      "max": 100.0
+    },
+    "delta": {
+      "n": 154,
+      "mean": 4.012987012987013,
+      "std": 30.789818156828225,
+      "median": 3.0,
+      "min": -83.0,
+      "p10": -18.499999999999996,
+      "p25": -5.0,
+      "p75": 15.0,
+      "p90": 45.0,
+      "max": 80.0,
+      "improved_count": 82,
+      "worsened_count": 56,
+      "unchanged_count": 16,
+      "improved_rate": 53.246753246753244,
+      "worsened_rate": 36.36363636363637,
+      "unchanged_rate": 10.38961038961039,
+      "se": 2.481114252893779,
+      "ci95_low": -0.8499969226847934,
+      "ci95_high": 8.87597094865882
+    },
+    "same_response_count": 0,
+    "same_response_rate": 0.0,
+    "changed_response_count": 154,
+    "changed_response_rate": 100.0,
+    "same_response_delta_mean": 0.0,
+    "changed_response_delta_mean": 4.012987012987013,
+    "same_response_improved_count": 0,
+    "same_response_worsened_count": 0,
+    "changed_response_improved_count": 82,
+    "changed_response_worsened_count": 56,
+    "score_thresholds": {
+      "ge_80_before": 38,
+      "ge_80_after": 49,
+      "ge_90_before": 33,
+      "ge_90_after": 44,
+      "ge_95_before": 25,
+      "ge_95_after": 40,
+      "eq_100_before": 0,
+      "eq_100_after": 27
+    },
+    "delta_corr_with_before": -0.3253364486626876,
+    "sign_test_two_sided_p": 0.03294750849564033,
+    "by_subject": [
+      {
+        "subject": "Algebra",
+        "n": 11,
+        "before_mean": 62.36363636363637,
+        "after_mean": 83.0909090909091,
+        "delta_mean": 20.727272727272727,
+        "improve_rate": 81.81818181818183,
+        "worsen_rate": 9.090909090909092,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Number Theory",
+        "n": 15,
+        "before_mean": 68.4,
+        "after_mean": 79.4,
+        "delta_mean": 11.0,
+        "improve_rate": 60.0,
+        "worsen_rate": 26.666666666666668,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Counting & Probability",
+        "n": 14,
+        "before_mean": 62.92857142857143,
+        "after_mean": 73.78571428571429,
+        "delta_mean": 10.857142857142858,
+        "improve_rate": 71.42857142857143,
+        "worsen_rate": 21.428571428571427,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Geometry",
+        "n": 19,
+        "before_mean": 17.894736842105264,
+        "after_mean": 21.894736842105264,
+        "delta_mean": 4.0,
+        "improve_rate": 47.368421052631575,
+        "worsen_rate": 47.368421052631575,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Precalculus",
+        "n": 26,
+        "before_mean": 35.69230769230769,
+        "after_mean": 38.84615384615385,
+        "delta_mean": 3.1538461538461537,
+        "improve_rate": 42.30769230769231,
+        "worsen_rate": 42.30769230769231,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Intermediate Algebra",
+        "n": 57,
+        "before_mean": 36.80701754385965,
+        "after_mean": 35.73684210526316,
+        "delta_mean": -1.0701754385964912,
+        "improve_rate": 45.614035087719294,
+        "worsen_rate": 42.10526315789473,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Prealgebra",
+        "n": 12,
+        "before_mean": 43.916666666666664,
+        "after_mean": 41.916666666666664,
+        "delta_mean": -2.0,
+        "improve_rate": 66.66666666666666,
+        "worsen_rate": 33.33333333333333,
+        "same_response_rate": 0.0
+      }
+    ],
+    "by_level": [
+      {
+        "level": 1,
+        "n": 3,
+        "before_mean": 16.666666666666668,
+        "after_mean": 28.333333333333332,
+        "delta_mean": 11.666666666666666,
+        "improve_rate": 33.33333333333333,
+        "worsen_rate": 66.66666666666666,
+        "same_response_rate": 0.0
+      },
+      {
+        "level": 2,
+        "n": 13,
+        "before_mean": 63.53846153846154,
+        "after_mean": 73.6923076923077,
+        "delta_mean": 10.153846153846153,
+        "improve_rate": 69.23076923076923,
+        "worsen_rate": 7.6923076923076925,
+        "same_response_rate": 0.0
+      },
+      {
+        "level": 3,
+        "n": 28,
+        "before_mean": 64.03571428571429,
+        "after_mean": 61.67857142857143,
+        "delta_mean": -2.357142857142857,
+        "improve_rate": 60.71428571428571,
+        "worsen_rate": 39.285714285714285,
+        "same_response_rate": 0.0
+      },
+      {
+        "level": 4,
+        "n": 37,
+        "before_mean": 39.21621621621622,
+        "after_mean": 46.4054054054054,
+        "delta_mean": 7.1891891891891895,
+        "improve_rate": 51.35135135135135,
+        "worsen_rate": 32.432432432432435,
+        "same_response_rate": 0.0
+      },
+      {
+        "level": 5,
+        "n": 73,
+        "before_mean": 32.41095890410959,
+        "after_mean": 35.84931506849315,
+        "delta_mean": 3.4383561643835616,
+        "improve_rate": 49.31506849315068,
+        "worsen_rate": 41.0958904109589,
+        "same_response_rate": 0.0
+      }
+    ],
+    "by_start_band": [
+      {
+        "start_band": "0-19",
+        "n": 51,
+        "before_mean": 8.862745098039216,
+        "after_mean": 17.07843137254902,
+        "delta_mean": 8.215686274509803,
+        "improve_rate": 64.70588235294117,
+        "worsen_rate": 21.568627450980394
+      },
+      {
+        "start_band": "20-39",
+        "n": 41,
+        "before_mean": 26.097560975609756,
+        "after_mean": 39.31707317073171,
+        "delta_mean": 13.21951219512195,
+        "improve_rate": 36.58536585365854,
+        "worsen_rate": 53.65853658536586
+      },
+      {
+        "start_band": "40-59",
+        "n": 10,
+        "before_mean": 47.5,
+        "after_mean": 72.5,
+        "delta_mean": 25.0,
+        "improve_rate": 70.0,
+        "worsen_rate": 30.0
+      },
+      {
+        "start_band": "60-79",
+        "n": 14,
+        "before_mean": 68.78571428571429,
+        "after_mean": 71.42857142857143,
+        "delta_mean": 2.642857142857143,
+        "improve_rate": 64.28571428571429,
+        "worsen_rate": 28.57142857142857
+      },
+      {
+        "start_band": "80-99",
+        "n": 38,
+        "before_mean": 92.78947368421052,
+        "after_mean": 76.21052631578948,
+        "delta_mean": -16.57894736842105,
+        "improve_rate": 47.368421052631575,
+        "worsen_rate": 42.10526315789473
+      },
+      {
+        "start_band": "100",
+        "n": 0,
+        "before_mean": NaN,
+        "after_mean": NaN,
+        "delta_mean": NaN,
+        "improve_rate": NaN,
+        "worsen_rate": NaN
+      }
+    ],
+    "top_gains": [
+      {
+        "unique_id": 24,
+        "subject": "Algebra",
+        "level": 5,
+        "original_stupid_score": 20,
+        "hacked_stupid_score": 100,
+        "delta": 80
+      },
+      {
+        "unique_id": 176,
+        "subject": "Number Theory",
+        "level": 3,
+        "original_stupid_score": 25,
+        "hacked_stupid_score": 100,
+        "delta": 75
+      },
+      {
+        "unique_id": 445,
+        "subject": "Intermediate Algebra",
+        "level": 4,
+        "original_stupid_score": 25,
+        "hacked_stupid_score": 97,
+        "delta": 72
+      },
+      {
+        "unique_id": 298,
+        "subject": "Precalculus",
+        "level": 4,
+        "original_stupid_score": 35,
+        "hacked_stupid_score": 100,
+        "delta": 65
+      },
+      {
+        "unique_id": 437,
+        "subject": "Algebra",
+        "level": 3,
+        "original_stupid_score": 35,
+        "hacked_stupid_score": 100,
+        "delta": 65
+      },
+      {
+        "unique_id": 421,
+        "subject": "Precalculus",
+        "level": 5,
+        "original_stupid_score": 20,
+        "hacked_stupid_score": 85,
+        "delta": 65
+      },
+      {
+        "unique_id": 296,
+        "subject": "Intermediate Algebra",
+        "level": 2,
+        "original_stupid_score": 30,
+        "hacked_stupid_score": 92,
+        "delta": 62
+      },
+      {
+        "unique_id": 323,
+        "subject": "Counting & Probability",
+        "level": 5,
+        "original_stupid_score": 40,
+        "hacked_stupid_score": 100,
+        "delta": 60
+      },
+      {
+        "unique_id": 271,
+        "subject": "Number Theory",
+        "level": 4,
+        "original_stupid_score": 45,
+        "hacked_stupid_score": 100,
+        "delta": 55
+      },
+      {
+        "unique_id": 202,
+        "subject": "Algebra",
+        "level": 5,
+        "original_stupid_score": 30,
+        "hacked_stupid_score": 82,
+        "delta": 52
+      }
+    ],
+    "top_drops": [
+      {
+        "unique_id": 62,
+        "subject": "Precalculus",
+        "level": 5,
+        "original_stupid_score": 98,
+        "hacked_stupid_score": 15,
+        "delta": -83
+      },
+      {
+        "unique_id": 317,
+        "subject": "Intermediate Algebra",
+        "level": 5,
+        "original_stupid_score": 90,
+        "hacked_stupid_score": 10,
+        "delta": -80
+      },
+      {
+        "unique_id": 396,
+        "subject": "Prealgebra",
+        "level": 3,
+        "original_stupid_score": 95,
+        "hacked_stupid_score": 15,
+        "delta": -80
+      },
+      {
+        "unique_id": 361,
+        "subject": "Intermediate Algebra",
+        "level": 4,
+        "original_stupid_score": 95,
+        "hacked_stupid_score": 15,
+        "delta": -80
+      },
+      {
+        "unique_id": 223,
+        "subject": "Number Theory",
+        "level": 3,
+        "original_stupid_score": 98,
+        "hacked_stupid_score": 20,
+        "delta": -78
+      },
+      {
+        "unique_id": 490,
+        "subject": "Intermediate Algebra",
+        "level": 5,
+        "original_stupid_score": 96,
+        "hacked_stupid_score": 18,
+        "delta": -78
+      },
+      {
+        "unique_id": 119,
+        "subject": "Prealgebra",
+        "level": 3,
+        "original_stupid_score": 90,
+        "hacked_stupid_score": 20,
+        "delta": -70
+      },
+      {
+        "unique_id": 444,
+        "subject": "Counting & Probability",
+        "level": 5,
+        "original_stupid_score": 80,
+        "hacked_stupid_score": 20,
+        "delta": -60
+      },
+      {
+        "unique_id": 168,
+        "subject": "Counting & Probability",
+        "level": 5,
+        "original_stupid_score": 78,
+        "hacked_stupid_score": 20,
+        "delta": -58
+      },
+      {
+        "unique_id": 108,
+        "subject": "Intermediate Algebra",
+        "level": 3,
+        "original_stupid_score": 80,
+        "hacked_stupid_score": 25,
+        "delta": -55
+      }
+    ]
+  },
+  "smart_to_stupid": {
+    "n": 487,
+    "before": {
+      "n": 487,
+      "mean": 100.0,
+      "std": 0.0,
+      "median": 100.0,
+      "min": 100.0,
+      "p25": 100.0,
+      "p75": 100.0,
+      "max": 100.0
+    },
+    "after": {
+      "n": 487,
+      "mean": 99.8952772073922,
+      "std": 1.3330702962587884,
+      "median": 100.0,
+      "min": 80.0,
+      "p25": 100.0,
+      "p75": 100.0,
+      "max": 100.0
+    },
+    "delta": {
+      "n": 487,
+      "mean": -0.10472279260780287,
+      "std": 1.3330702962587884,
+      "median": 0.0,
+      "min": -20.0,
+      "p10": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "p90": 0.0,
+      "max": 0.0,
+      "improved_count": 0,
+      "worsened_count": 5,
+      "unchanged_count": 482,
+      "improved_rate": 0.0,
+      "worsened_rate": 1.0266940451745379,
+      "unchanged_rate": 98.97330595482546,
+      "se": 0.06040718124299301,
+      "ci95_low": -0.22312086784406918,
+      "ci95_high": 0.013675282628463431
+    },
+    "same_response_count": 0,
+    "same_response_rate": 0.0,
+    "changed_response_count": 487,
+    "changed_response_rate": 100.0,
+    "same_response_delta_mean": 0.0,
+    "changed_response_delta_mean": -0.10472279260780287,
+    "same_response_improved_count": 0,
+    "same_response_worsened_count": 0,
+    "changed_response_improved_count": 0,
+    "changed_response_worsened_count": 5,
+    "score_thresholds": {
+      "ge_80_before": 487,
+      "ge_80_after": 487,
+      "ge_90_before": 487,
+      "ge_90_after": 485,
+      "ge_95_before": 487,
+      "ge_95_after": 484,
+      "eq_100_before": 487,
+      "eq_100_after": 482
+    },
+    "delta_corr_with_before": NaN,
+    "sign_test_two_sided_p": 0.0625,
+    "by_subject": [
+      {
+        "subject": "Algebra",
+        "n": 123,
+        "before_mean": 100.0,
+        "after_mean": 100.0,
+        "delta_mean": 0.0,
+        "improve_rate": 0.0,
+        "worsen_rate": 0.0,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Counting & Probability",
+        "n": 37,
+        "before_mean": 100.0,
+        "after_mean": 100.0,
+        "delta_mean": 0.0,
+        "improve_rate": 0.0,
+        "worsen_rate": 0.0,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Number Theory",
+        "n": 61,
+        "before_mean": 100.0,
+        "after_mean": 100.0,
+        "delta_mean": 0.0,
+        "improve_rate": 0.0,
+        "worsen_rate": 0.0,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Precalculus",
+        "n": 54,
+        "before_mean": 100.0,
+        "after_mean": 100.0,
+        "delta_mean": 0.0,
+        "improve_rate": 0.0,
+        "worsen_rate": 0.0,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Geometry",
+        "n": 38,
+        "before_mean": 100.0,
+        "after_mean": 99.78947368421052,
+        "delta_mean": -0.21052631578947367,
+        "improve_rate": 0.0,
+        "worsen_rate": 2.631578947368421,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Prealgebra",
+        "n": 81,
+        "before_mean": 100.0,
+        "after_mean": 99.75308641975309,
+        "delta_mean": -0.24691358024691357,
+        "improve_rate": 0.0,
+        "worsen_rate": 1.2345679012345678,
+        "same_response_rate": 0.0
+      },
+      {
+        "subject": "Intermediate Algebra",
+        "n": 93,
+        "before_mean": 100.0,
+        "after_mean": 99.75268817204301,
+        "delta_mean": -0.24731182795698925,
+        "improve_rate": 0.0,
+        "worsen_rate": 3.225806451612903,
+        "same_response_rate": 0.0
+      }
+    ],
+    "by_level": [
+      {
+        "level": 1,
+        "n": 42,
+        "before_mean": 100.0,
+        "after_mean": 99.80952380952381,
+        "delta_mean": -0.19047619047619047,
+        "improve_rate": 0.0,
+        "worsen_rate": 2.380952380952381,
+        "same_response_rate": 0.0
+      },
+      {
+        "level": 2,
+        "n": 89,
+        "before_mean": 100.0,
+        "after_mean": 99.98876404494382,
+        "delta_mean": -0.011235955056179775,
+        "improve_rate": 0.0,
+        "worsen_rate": 1.1235955056179776,
+        "same_response_rate": 0.0
+      },
+      {
+        "level": 3,
+        "n": 103,
+        "before_mean": 100.0,
+        "after_mean": 99.80582524271844,
+        "delta_mean": -0.1941747572815534,
+        "improve_rate": 0.0,
+        "worsen_rate": 0.9708737864077669,
+        "same_response_rate": 0.0
+      },
+      {
+        "level": 4,
+        "n": 125,
+        "before_mean": 100.0,
+        "after_mean": 99.84,
+        "delta_mean": -0.16,
+        "improve_rate": 0.0,
+        "worsen_rate": 0.8,
+        "same_response_rate": 0.0
+      },
+      {
+        "level": 5,
+        "n": 128,
+        "before_mean": 100.0,
+        "after_mean": 99.984375,
+        "delta_mean": -0.015625,
+        "improve_rate": 0.0,
+        "worsen_rate": 0.78125,
+        "same_response_rate": 0.0
+      }
+    ],
+    "by_start_band": [
+      {
+        "start_band": "0-19",
+        "n": 0,
+        "before_mean": NaN,
+        "after_mean": NaN,
+        "delta_mean": NaN,
+        "improve_rate": NaN,
+        "worsen_rate": NaN
+      },
+      {
+        "start_band": "20-39",
+        "n": 0,
+        "before_mean": NaN,
+        "after_mean": NaN,
+        "delta_mean": NaN,
+        "improve_rate": NaN,
+        "worsen_rate": NaN
+      },
+      {
+        "start_band": "40-59",
+        "n": 0,
+        "before_mean": NaN,
+        "after_mean": NaN,
+        "delta_mean": NaN,
+        "improve_rate": NaN,
+        "worsen_rate": NaN
+      },
+      {
+        "start_band": "60-79",
+        "n": 0,
+        "before_mean": NaN,
+        "after_mean": NaN,
+        "delta_mean": NaN,
+        "improve_rate": NaN,
+        "worsen_rate": NaN
+      },
+      {
+        "start_band": "80-99",
+        "n": 0,
+        "before_mean": NaN,
+        "after_mean": NaN,
+        "delta_mean": NaN,
+        "improve_rate": NaN,
+        "worsen_rate": NaN
+      },
+      {
+        "start_band": "100",
+        "n": 487,
+        "before_mean": 100.0,
+        "after_mean": 99.8952772073922,
+        "delta_mean": -0.10472279260780287,
+        "improve_rate": 0.0,
+        "worsen_rate": 1.0266940451745379
+      }
+    ],
+    "top_gains": [
+      {
+        "unique_id": 499,
+        "subject": "Geometry",
+        "level": 4,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 0,
+        "subject": "Precalculus",
+        "level": 2,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 1,
+        "subject": "Intermediate Algebra",
+        "level": 5,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 2,
+        "subject": "Algebra",
+        "level": 3,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 3,
+        "subject": "Number Theory",
+        "level": 3,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 4,
+        "subject": "Algebra",
+        "level": 2,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 5,
+        "subject": "Prealgebra",
+        "level": 2,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 483,
+        "subject": "Precalculus",
+        "level": 3,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 482,
+        "subject": "Number Theory",
+        "level": 5,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 481,
+        "subject": "Intermediate Algebra",
+        "level": 5,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      }
+    ],
+    "top_drops": [
+      {
+        "unique_id": 21,
+        "subject": "Intermediate Algebra",
+        "level": 3,
+        "original_smart_score": 100,
+        "hacked_smart_score": 80,
+        "delta": -20
+      },
+      {
+        "unique_id": 273,
+        "subject": "Prealgebra",
+        "level": 4,
+        "original_smart_score": 100,
+        "hacked_smart_score": 80,
+        "delta": -20
+      },
+      {
+        "unique_id": 18,
+        "subject": "Geometry",
+        "level": 1,
+        "original_smart_score": 100,
+        "hacked_smart_score": 92,
+        "delta": -8
+      },
+      {
+        "unique_id": 490,
+        "subject": "Intermediate Algebra",
+        "level": 5,
+        "original_smart_score": 100,
+        "hacked_smart_score": 98,
+        "delta": -2
+      },
+      {
+        "unique_id": 83,
+        "subject": "Intermediate Algebra",
+        "level": 2,
+        "original_smart_score": 100,
+        "hacked_smart_score": 99,
+        "delta": -1
+      },
+      {
+        "unique_id": 492,
+        "subject": "Precalculus",
+        "level": 3,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 491,
+        "subject": "Prealgebra",
+        "level": 5,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 489,
+        "subject": "Intermediate Algebra",
+        "level": 3,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 488,
+        "subject": "Prealgebra",
+        "level": 5,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      },
+      {
+        "unique_id": 487,
+        "subject": "Number Theory",
+        "level": 1,
+        "original_smart_score": 100,
+        "hacked_smart_score": 100,
+        "delta": 0
+      }
+    ]
+  },
+  "same_question_comparison_stupid_to_smart_targets": {
+    "n": 154,
+    "hacked_stupid_mean": 46.12987012987013,
+    "baseline_smart_mean_same_questions": 98.0909090909091,
+    "baseline_stupid_mean_same_questions": 42.116883116883116,
+    "hacked_ge_baseline_smart_count": 29,
+    "hacked_ge_baseline_smart_rate": 18.83116883116883,
+    "hacked_gt_baseline_stupid_count": 82,
+    "hacked_gt_baseline_stupid_rate": 53.246753246753244
+  },
+  "overall_experiment": {
+    "n": 500,
+    "stupid_baseline_mean": 82.172,
+    "stupid_experiment_mean": 83.408,
+    "stupid_mean_delta": 1.236,
+    "smart_baseline_mean": 99.172,
+    "smart_experiment_mean": 99.07,
+    "smart_mean_delta": -0.102
+  },
+  "large_effect_counts": {
+    "s2s_large_gains": {
+      "ge_1": 82,
+      "ge_3": 79,
+      "ge_5": 73,
+      "ge_10": 52,
+      "ge_20": 36,
+      "ge_30": 27
+    },
+    "s2s_large_drops": {
+      "le_neg_1": 56,
+      "le_neg_3": 55,
+      "le_neg_5": 53,
+      "le_neg_10": 31,
+      "le_neg_20": 16,
+      "le_neg_30": 15
+    },
+    "sm2st_large_drops": {
+      "le_neg_1": 5,
+      "le_neg_3": 3,
+      "le_neg_5": 3,
+      "le_neg_10": 2,
+      "le_neg_20": 2,
+      "le_neg_30": 0
+    }
+  }
+}
